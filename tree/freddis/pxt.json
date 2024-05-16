@@ -1,0 +1,24 @@
+{
+    "name": "industrial-revolution-tycoon-tree-freddis",
+    "dependencies": {
+        "device": "*",
+        "industrial-revolution-tycoon": "github:graygray121/industrial-revolution-tycoon"
+    },
+    "files": [
+        "main.blocks",
+        "main.ts",
+        "README.md",
+        "assets.json"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "targetVersions": {
+        "target": "1.12.51",
+        "targetId": "arcade"
+    },
+    "supportedTargets": [
+        "arcade"
+    ],
+    "preferredEditor": "blocksprj"
+}
