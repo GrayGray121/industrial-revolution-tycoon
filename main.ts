@@ -35,24 +35,6 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     200,
     false
     )
-    mySprite = sprites.create(img`
-        . . . . . . . . . . . . b b . . 
-        . . . . . . . . . . . . . b b . 
-        . . . . . . . . . . . f f f f f 
-        . . . . . . . . . . . f e f e f 
-        . . . . . . . . . . . f e f e f 
-        . . . . . . . . . . . f e e e f 
-        . . . . . f f f f . . f e e e f 
-        f f f f f f e e f f f f e e e f 
-        f e e e e e e e e e e e e e e f 
-        f e e e e e e e e e e e e e e f 
-        f e e b f b e e e e e e e e e f 
-        f e e f f f e e e e e e e e e f 
-        f e e b f b e e e e e e e e e f 
-        f e e e e e e e e e e e e e e f 
-        f e e e e e e e e e e e e e e f 
-        f f f f f f f f f f f f f f f f 
-        `, SpriteKind.Building)
     mySprite.x = 25
     animation.runImageAnimation(
     mySprite,
@@ -145,7 +127,6 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     500,
     true
     )
-    info.changeScoreBy(-50)
 })
 info.onCountdownEnd(function () {
     scene.setBackgroundImage(img`
@@ -272,20 +253,44 @@ info.onCountdownEnd(function () {
         `)
     pause(1000)
     game.showLongText("you went into debt and the police found you", DialogLayout.Bottom)
-    pause(5000)
+    pause(1000)
     game.gameOver(false)
 })
 info.onScore(10000, function () {
     game.gameOver(true)
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
+    sprites.destroy(mySprite)
+    mySprite = sprites.create(img`
+        . . . . . . . . . . . . b b . . 
+        . . . . . . . . . . . . . b b . 
+        . . . . . . . . . . . f f f f f 
+        . . . . . . . . . . . f e f e f 
+        . . . . . . . . . . . f e f e f 
+        . . . . . . . . . . . f e e e f 
+        . . . . . f f f f . . f e e e f 
+        f f f f f f e e f f f f e e e f 
+        f e e e e e e e e e e e e e e f 
+        f e e e e e e e e e e e e e e f 
+        f e e b f b e e e e e e e e e f 
+        f e e f f f e e e e e e e e e f 
+        f e e b f b e e e e e e e e e f 
+        f e e e e e e e e e e e e e e f 
+        f e e e e e e e e e e e e e e f 
+        f f f f f f f f f f f f f f f f 
+        `, SpriteKind.Building)
+    mySprite.x = 25
+    info.changeScoreBy(-50)
+})
 info.player1.onScore(0, function () {
     info.stopCountdown()
 })
 info.player1.onScore(-0.9, function () {
-    info.startCountdown(10)
+    info.startCountdown(2)
 })
 let mySprite2: Sprite = null
 let mySprite: Sprite = null
+tiles.setCurrentTilemap(tilemap`level2`)
 info.setScore(0)
 mySprite = sprites.create(img`
     2 2 2 2 
@@ -327,7 +332,6 @@ mySprite2 = sprites.create(img`
     `, SpriteKind.Player)
 controller.moveSprite(mySprite2, 100, 100)
 worker.x = 10
-mySprite.x = 25
 game.onUpdateInterval(2000, function () {
     animation.runImageAnimation(
     worker,
