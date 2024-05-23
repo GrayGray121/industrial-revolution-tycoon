@@ -3,7 +3,8 @@
     "description": "",
     "dependencies": {
         "device": "*",
-        "sprite-scaling": "*"
+        "sprite-scaling": "*",
+        "Timers": "github:microsoft/arcade-timers#v1.1.0"
     },
     "files": [
         "main.blocks",
@@ -11,7 +12,9 @@
         "README.md",
         "assets.json",
         "tilemap.g.jres",
-        "tilemap.g.ts"
+        "tilemap.g.ts",
+        "images.g.jres",
+        "images.g.ts"
     ],
     "testFiles": [
         "test.ts"

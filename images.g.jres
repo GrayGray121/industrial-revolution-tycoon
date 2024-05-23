@@ -1,0 +1,12 @@
+{
+    "image1": {
+        "data": "hwQgACAAAAAAAADw/////wAAAPD/////AAAA8O7u7v4AAADw7u7u/gAAAPDu7u7+AAAA8O7u7v4AAADw7vvr/gAAAPDu++v+AAAA8O7/7/4AAADw7v/v/gAAAP/u++v+AAAA/+776/4AAADv7u7u/gAAAO/u7u7+AAAA7+7u7v4AAADv7u7u/gAAAP/u7u7+AAAA/+7u7v4AAADw7u7u/gAAAPDu7u7+AAAA8O7u7v4AAADw7u7u/gDw///u7u7+sPD//+7u7v4L++7u7u7u/rDw7u7u7u7+APv/7u7u7v4A+//u7u7u/rDw7u7u7u7+sPDu7u7u7v4A8P///////wDw////////AAAA8P////8AAADw/////wAAAPDu7u7+AAAA8O7u7v4AAADw7u7u/gAAAPDu7u7+AAAA8O776/4AAADw7vvr/gAAAPDu/+/+AAAA8O7/7/4AAAD/7vvr/gAAAP/u++v+AAAA7+7u7v4AAADv7u7u/gAAAO/u7u7+AAAA7+7u7v4AAAD/7u7u/gAAAP/u7u7+AAAA8O7u7v4AAADw7u7u/gAAAPDu7u7+AAAA8O7u7v4A8P//7u7u/gDw///u7u7+APvu7u7u7v6w8O7u7u7u/rvw/+7u7u7+C/v/7u7u7v6w8O7u7u7u/gvw7u7u7u7+APD///////8A8P///////w==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Factory clump"
+    },
+    "*": {
+        "mimeType": "image/x-mkcd-f4",
+        "dataEncoding": "base64",
+        "namespace": "myImages"
+    }
+}
