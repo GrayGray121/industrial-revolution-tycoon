@@ -6,10 +6,6 @@ namespace SpriteKind {
 info.player1.onScore(1, function () {
     info.stopCountdown()
 })
-info.onScore(100000, function () {
-    tiles.setCurrentTilemap(tilemap`level13`)
-    game.gameOver(true)
-})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile6`, function (sprite, location) {
     loom_workers = sprites.create(img`
         . . . . . . . . . . . . . . . . 
@@ -137,7 +133,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile6`, function (sprite, l
     200,
     true
     )
-    info.changeScoreBy(-50)
+    loom_workers.x = 50
+    loom_workers.y = 10
     tiles.setCurrentTilemap(tilemap`level6`)
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -337,6 +334,10 @@ info.onCountdownEnd(function () {
     pause(1000)
     game.gameOver(false)
 })
+info.onScore(10000, function () {
+    tiles.setCurrentTilemap(tilemap`level13`)
+    game.gameOver(true)
+})
 controller.B.onEvent(ControllerButtonEvent.Repeated, function () {
     many_Factory()
 })
@@ -350,6 +351,10 @@ function Matirials () {
 }
 info.player1.onScore(2, function () {
     info.stopCountdown()
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
+    scene.cameraShake(3, 5000)
+    tiles.setCurrentTilemap(tilemap`level18`)
 })
 function many_Factory () {
     factory_clump = sprites.create(assets.image`Factory clump`, SpriteKind.buildings)
@@ -527,7 +532,7 @@ function many_Factory () {
     false
     )
     scene.cameraShake(6, 2500)
-    info.changeScoreBy(-1000)
+    info.changeScoreBy(-1250)
     for (let index = 0; index < 10000000000000; index++) {
         info.changeScoreBy(45)
         pause(2000)
@@ -662,7 +667,6 @@ controller.A.onEvent(ControllerButtonEvent.Repeated, function () {
     false
     )
     mySprite.x = 25
-    info.changeScoreBy(-250)
     value_for_factory()
     pause(5000)
 })
@@ -670,21 +674,23 @@ info.player1.onScore(0, function () {
     info.stopCountdown()
 })
 function value_for_factory () {
+    info.changeScoreBy(-250)
+    game.showLongText("get out of debt fast", DialogLayout.Top)
+    info.startCountdown(15)
     for (let index = 0; index < 10000000000000; index++) {
         info.changeScoreBy(15)
         pause(2000)
     }
 }
 function many_loom_workers () {
+    info.changeScoreBy(-50)
+    game.showLongText("get out of debt fast", DialogLayout.Top)
+    info.startCountdown(15)
     for (let index = 0; index < 10000000000000; index++) {
         info.changeScoreBy(5)
         pause(2000)
     }
 }
-info.player1.onScore(-0.9, function () {
-    info.startCountdown(20)
-    game.showLongText("get out of debt fast", DialogLayout.Top)
-})
 info.player1.onScore(3, function () {
     info.stopCountdown()
 })
