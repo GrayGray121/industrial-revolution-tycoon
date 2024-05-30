@@ -136,9 +136,12 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile6`, function (sprite, l
     loom_workers.x = 50
     loom_workers.y = 10
     tiles.setCurrentTilemap(tilemap`level6`)
+    many_loom_workers2 = 1
+    pause(100)
+    many_loom_workers2 = 0
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
-    many_loom_workers()
+	
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (true) {
@@ -327,6 +330,9 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile4`, function (sprite, location) {
     scene.cameraShake(3, 5000)
     tiles.setCurrentTilemap(tilemap`level11`)
+    other_factory = 1
+    pause(100)
+    other_factory = 0
 })
 info.onCountdownEnd(function () {
     pause(1000)
@@ -339,7 +345,7 @@ info.onScore(10000, function () {
     game.gameOver(true)
 })
 controller.B.onEvent(ControllerButtonEvent.Repeated, function () {
-    many_Factory()
+	
 })
 function Matirials () {
     timer.after(60000, function () {
@@ -356,6 +362,9 @@ info.player1.onScore(2, function () {
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
     scene.cameraShake(3, 5000)
     tiles.setCurrentTilemap(tilemap`level18`)
+    many_factory = 1
+    pause(100)
+    many_factory = 0
 })
 function many_Factory () {
     factory_clump = sprites.create(assets.image`Factory clump`, SpriteKind.buildings)
@@ -700,6 +709,9 @@ info.player1.onScore(3, function () {
 })
 let mySprite: Sprite = null
 let factory_clump: Sprite = null
+let many_factory = 0
+let other_factory = 0
+let many_loom_workers2 = 0
 let loom_workers: Sprite = null
 let worker: Sprite = null
 tiles.setCurrentTilemap(tilemap`level8`)
@@ -743,6 +755,24 @@ worker.x = 10
 Matirials()
 game.onUpdateInterval(1000, function () {
 	
+})
+forever(function () {
+    while (many_loom_workers2 == 1) {
+        many_loom_workers()
+        pause(5000)
+    }
+})
+forever(function () {
+    while (other_factory == 1) {
+        value_for_factory()
+        pause(5000)
+    }
+})
+forever(function () {
+    while (many_factory == 1) {
+        many_Factory()
+        pause(5000)
+    }
 })
 game.onUpdateInterval(30000, function () {
 	
