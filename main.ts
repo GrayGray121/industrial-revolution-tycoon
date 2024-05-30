@@ -342,12 +342,13 @@ controller.B.onEvent(ControllerButtonEvent.Repeated, function () {
     many_Factory()
 })
 function Matirials () {
-    for (let index = 0; index < 1000; index++) {
-        timer.after(3000, function () {
-            game.showLongText("You need more materials", DialogLayout.Top)
+    timer.after(60000, function () {
+        for (let index = 0; index < 1000; index++) {
+            game.showLongText("You need more materials so you bought some", DialogLayout.Top)
             info.changeScoreBy(-40)
-        })
-    }
+            pause(30000)
+        }
+    })
 }
 info.player1.onScore(2, function () {
     info.stopCountdown()
@@ -691,6 +692,9 @@ function many_loom_workers () {
         pause(2000)
     }
 }
+info.player1.onScore(-0.9, function () {
+    info.startCountdown(15)
+})
 info.player1.onScore(3, function () {
     info.stopCountdown()
 })
@@ -736,6 +740,7 @@ let mySprite2 = sprites.create(img`
     `, SpriteKind.Player)
 controller.moveSprite(mySprite2, 100, 100)
 worker.x = 10
+Matirials()
 game.onUpdateInterval(1000, function () {
 	
 })
