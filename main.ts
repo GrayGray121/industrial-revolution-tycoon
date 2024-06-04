@@ -3,8 +3,14 @@ namespace SpriteKind {
     export const worker = SpriteKind.create()
     export const buildings = SpriteKind.create()
 }
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, location) {
+    other_factory = 2
+})
 info.player1.onScore(1, function () {
     info.stopCountdown()
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile1`, function (sprite, location) {
+    other_factory = 2
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile6`, function (sprite, location) {
     loom_workers = sprites.create(img`
@@ -146,7 +152,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (true) {
         animation.runImageAnimation(
-        worker,
+        worker2,
         [img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -328,43 +334,26 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile4`, function (sprite, location) {
-    scene.cameraShake(3, 5000)
     tiles.setCurrentTilemap(tilemap`level11`)
+    mySprite.x = 25
+    pause(5000)
     other_factory = 1
     pause(100)
     other_factory = 0
+    scene.cameraShake(3, 5000)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, location) {
+    game.gameOver(true)
 })
 info.onCountdownEnd(function () {
     pause(1000)
     game.showLongText("you went into debt and the police found you", DialogLayout.Bottom)
     pause(1000)
-    game.gameOver(false)
-})
-info.onScore(10000, function () {
-    tiles.setCurrentTilemap(tilemap`level13`)
-    game.gameOver(true)
-})
-controller.B.onEvent(ControllerButtonEvent.Repeated, function () {
-	
-})
-function Matirials () {
-    timer.after(60000, function () {
-        for (let index = 0; index < 1000; index++) {
-            game.showLongText("You need more materials so you bought some", DialogLayout.Top)
-            info.changeScoreBy(-40)
-            pause(30000)
-        }
-    })
-}
-info.player1.onScore(2, function () {
-    info.stopCountdown()
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
-    scene.cameraShake(3, 5000)
-    tiles.setCurrentTilemap(tilemap`level18`)
-    many_factory = 1
-    pause(100)
-    many_factory = 0
+    sprites.destroy(factory_clump)
+    sprites.destroy(loom_workers)
+    sprites.destroy(worker2)
+    sprites.destroy(mySprite)
+    tiles.setCurrentTilemap(tilemap`level22`)
 })
 function many_Factory () {
     factory_clump = sprites.create(assets.image`Factory clump`, SpriteKind.buildings)
@@ -542,14 +531,60 @@ function many_Factory () {
     false
     )
     scene.cameraShake(6, 2500)
+    info.startCountdown(15)
     info.changeScoreBy(-1250)
     for (let index = 0; index < 10000000000000; index++) {
         info.changeScoreBy(45)
         pause(2000)
     }
+    timer.after(20000, function () {
+        factory_clump = 3
+    })
 }
-controller.A.onEvent(ControllerButtonEvent.Repeated, function () {
+controller.B.onEvent(ControllerButtonEvent.Repeated, function () {
+	
+})
+function Matirials () {
+    timer.after(60000, function () {
+        for (let index = 0; index < 1000; index++) {
+            game.showLongText("You need more materials so you bought some", DialogLayout.Top)
+            info.changeScoreBy(-40)
+            pause(30000)
+        }
+    })
+}
+info.player1.onScore(2, function () {
+    info.stopCountdown()
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
     scene.cameraShake(3, 5000)
+    tiles.setCurrentTilemap(tilemap`level18`)
+    many_factory = 1
+    pause(100)
+    many_factory = 0
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile5`, function (sprite, location) {
+    game.gameOver(true)
+})
+controller.A.onEvent(ControllerButtonEvent.Repeated, function () {
+	
+})
+info.player1.onScore(0, function () {
+    info.stopCountdown()
+})
+info.player1.onScore(-0.9, function () {
+    info.startCountdown(15)
+})
+function many_loom_workers () {
+    info.changeScoreBy(-50)
+    game.showLongText("get out of debt fast", DialogLayout.Top)
+    info.startCountdown(15)
+    for (let index = 0; index < 10000000000000; index++) {
+        info.changeScoreBy(5)
+        pause(2000)
+    }
+}
+function value_for_factory () {
     mySprite = sprites.create(img`
         . . . . . . . . . . . . b b . . 
         . . . . . . . . . . . . . b b . 
@@ -676,14 +711,6 @@ controller.A.onEvent(ControllerButtonEvent.Repeated, function () {
     750,
     false
     )
-    mySprite.x = 25
-    value_for_factory()
-    pause(5000)
-})
-info.player1.onScore(0, function () {
-    info.stopCountdown()
-})
-function value_for_factory () {
     info.changeScoreBy(-250)
     game.showLongText("get out of debt fast", DialogLayout.Top)
     info.startCountdown(15)
@@ -692,33 +719,21 @@ function value_for_factory () {
         pause(2000)
     }
 }
-function many_loom_workers () {
-    info.changeScoreBy(-50)
-    game.showLongText("get out of debt fast", DialogLayout.Top)
-    info.startCountdown(15)
-    for (let index = 0; index < 10000000000000; index++) {
-        info.changeScoreBy(5)
-        pause(2000)
-    }
-}
-info.player1.onScore(-0.9, function () {
-    info.startCountdown(15)
-})
 info.player1.onScore(3, function () {
     info.stopCountdown()
 })
-let mySprite: Sprite = null
-let factory_clump: Sprite = null
 let many_factory = 0
-let other_factory = 0
+let factory_clump = 0
+let mySprite: Sprite = null
 let many_loom_workers2 = 0
 let loom_workers: Sprite = null
-let worker: Sprite = null
+let other_factory = 0
+let worker2: Sprite = null
 tiles.setCurrentTilemap(tilemap`level8`)
 game.showLongText("Welcome to Industrial Revolution Tycoon", DialogLayout.Bottom)
 tiles.setCurrentTilemap(tilemap`level2`)
 info.setScore(0)
-worker = sprites.create(img`
+worker2 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -751,7 +766,7 @@ let mySprite2 = sprites.create(img`
     . . f f . f . . . . . . 
     `, SpriteKind.Player)
 controller.moveSprite(mySprite2, 100, 100)
-worker.x = 10
+worker2.x = 10
 Matirials()
 game.onUpdateInterval(1000, function () {
 	
@@ -772,6 +787,16 @@ forever(function () {
     while (many_factory == 1) {
         many_Factory()
         pause(5000)
+    }
+})
+forever(function () {
+    while (other_factory == 2) {
+        game.gameOver(false)
+    }
+})
+forever(function () {
+    if (factory_clump == 3) {
+        tiles.setCurrentTilemap(tilemap`level26`)
     }
 })
 game.onUpdateInterval(30000, function () {
